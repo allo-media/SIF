@@ -12,7 +12,7 @@ def get_weighted_average(We, x, w):
     """
     n_samples = x.shape[0]
     emb = np.zeros((n_samples, We.shape[1]))
-    for i in xrange(n_samples):
+    for i in range(n_samples):
         emb[i,:] = w[i,:].dot(We[x[i,:],:]) / np.count_nonzero(w[i,:])
     return emb
 
@@ -23,7 +23,7 @@ def compute_pc(X,npc=1):
     :param npc: number of principal components to remove
     :return: component_[i,:] is the i-th pc
     """
-    svd = TruncatedSVD(n_components=npc, n_iter=7, random_state=0)
+    svd = TruncatedSVD(n_components=npc, n_iter=7, random_state=42)
     svd.fit(X)
     return svd.components_
 
